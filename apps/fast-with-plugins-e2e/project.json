@@ -1,0 +1,28 @@
+{
+  "root": "apps/fast-with-plugins-e2e",
+  "sourceRoot": "apps/fast-with-plugins-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/fast-with-plugins-e2e/cypress.json",
+        "devServerTarget": "fast-with-plugins:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "fast-with-plugins:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/fast-with-plugins-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["fast-with-plugins"]
+}

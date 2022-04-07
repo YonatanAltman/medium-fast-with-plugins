@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/fast-with-plugins",
+  "sourceRoot": "apps/fast-with-plugins/src",
+  "prefix": "cool-workspace",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/fast-with-plugins",
+        "index": "apps/fast-with-plugins/src/index.html",
+        "main": "apps/fast-with-plugins/src/main.ts",
+        "polyfills": "apps/fast-with-plugins/src/polyfills.ts",
+        "tsConfig": "apps/fast-with-plugins/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/fast-with-plugins/src/favicon.ico",
+          "apps/fast-with-plugins/src/assets"
+        ],
+        "styles": ["apps/fast-with-plugins/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/fast-with-plugins/src/environments/environment.ts",
+              "with": "apps/fast-with-plugins/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "fast-with-plugins:build:production"
+        },
+        "development": {
+          "browserTarget": "fast-with-plugins:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "fast-with-plugins:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/fast-with-plugins/src/**/*.ts",
+          "apps/fast-with-plugins/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/fast-with-plugins"],
+      "options": {
+        "jestConfig": "apps/fast-with-plugins/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

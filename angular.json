@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "fast-with-plugins": "apps/fast-with-plugins",
+    "fast-with-plugins-e2e": "apps/fast-with-plugins-e2e"
+  }
+}
